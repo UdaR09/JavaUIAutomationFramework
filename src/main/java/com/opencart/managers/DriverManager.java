@@ -1,4 +1,4 @@
 package com.opencart.managers;
 
-public class Example {
+public class DriverManager {
 }
