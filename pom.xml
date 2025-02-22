@@ -18,6 +18,8 @@
         <selenium-firefox-driver.version>4.28.1</selenium-firefox-driver.version>
         <selenium-edge-driver.version>4.28.1</selenium-edge-driver.version>
         <selenium-safari-driver.version>4.28.1</selenium-safari-driver.version>
+        <junit-api.version>5.12.0</junit-api.version>
+        <junit-engine.version>5.12.0-RC2</junit-engine.version>
     </properties>
 
     <dependencies>
@@ -47,6 +49,20 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-firefox-driver</artifactId>
             <version>${selenium-firefox-driver.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit-engine.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit-api.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-edge-driver -->

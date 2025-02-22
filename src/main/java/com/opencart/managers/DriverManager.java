@@ -50,4 +50,11 @@ public class DriverManager {
     public WebDriver getDriver(){
         return driver;
     }
+
+    public void quitTheDriver(){
+        driver.quit();
+        driver = null;
+        instance = null;
+        System.out.println("Driver quitted");
+    }
 }
