@@ -8,6 +8,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 
+import java.time.Duration;
+
 public class DriverManager {
     private static DriverManager instance;
     private WebDriver driver;
@@ -41,7 +43,13 @@ public class DriverManager {
             default:
                 System.out.println("Invalid Driver Type");
         }
+        int implicitWait = Integer.parseInt(ConfigReaderManager.getProperty("implicitWait"));
+        int pageLoadTimeout = Integer.parseInt(ConfigReaderManager.getProperty("pageLoadTimeout"));
+
+    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWait));
+    driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(pageLoadTimeout));
     }
+
     public static DriverManager getInstance(){
         if(instance == null){
             instance = new DriverManager();
