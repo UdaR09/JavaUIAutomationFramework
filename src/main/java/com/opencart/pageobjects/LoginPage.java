@@ -1,5 +1,6 @@
 package com.opencart.pageobjects;
 
+import com.opencart.managers.ExplicitWaitManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,7 +20,9 @@ public class LoginPage extends Page{
     public WebElement loginButton;
 
     public void completeLoginForm(String email, String password) {
+        ExplicitWaitManager.waitTillElementIsVisivle(this.email);
         this.email.sendKeys(email);
+        ExplicitWaitManager.waitTillElementIsVisivle(this.password);
         this.password.sendKeys(password);
         System.out.println("Completed login form");
     }

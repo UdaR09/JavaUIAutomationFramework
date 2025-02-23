@@ -1,27 +1,35 @@
 package com.opencart.stepdefinitions;
 
+import com.opencart.CucumberTestRunner;
 import com.opencart.managers.DriverManager;
 import io.cucumber.java.*;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Hooks {
+    private static final Logger logger = LogManager.getLogger(Hooks.class);
+    private static int counter = 0;
     @BeforeAll
     public static void beforeAll() {
-        System.out.println("Executing of tests suite starting...");
+        logger.log(Level.INFO, "Executing of tests suite started");
     }
 
     @Before
     public void before() {
-        System.out.println("Test started");
+        String logMessage = "Test " + ++counter + " started";
+        logger.log(Level.INFO, logMessage);
     }
 
     @After
     public void after() {
-        System.out.println("Test finished");
+        String logMessage = "Test " + counter + " finished";
+        logger.log(Level.INFO, logMessage);
         DriverManager.getInstance().quitTheDriver();
     }
 
     @AfterAll
     public static void afterAll() {
-        System.out.println("Tests suite finished");
+        logger.log(Level.INFO, "Executing of tests suite finished");
     }
 }

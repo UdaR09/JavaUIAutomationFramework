@@ -6,7 +6,6 @@ Feature: Login related tests
       | <email>    |
       | <password> |
     When the "loginButton" from "LoginPage" is clicked
-    And a thread sleep of 5000 milliseconds is executed
     Then the following list of error messages is displayed:
       | Warning: No match for E-Mail Address and/or Password. |
     Examples:

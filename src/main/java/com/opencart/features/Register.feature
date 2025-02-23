@@ -6,6 +6,7 @@ Feature: The register Flow test suite
     And The register form is populated with data
     And the "privacyPolicy" from "RegisterPage" is clicked
     When the "continueButton" from "RegisterPage" is clicked
+    And a thread sleep of 1000 milliseconds is executed
     Then the URL contains the following keyword "account/success"
 
 
@@ -14,6 +15,7 @@ Feature: The register Flow test suite
     And Register Page is accessed from Home Page buttons
     And The register form is populated with data
     When the "continueButton" from "RegisterPage" is clicked
+    And a thread sleep of 1000 milliseconds is executed
     Then the URL contains the following keyword "register"
 
   @run
@@ -26,7 +28,7 @@ Feature: The register Flow test suite
       | email     | Random      |
       | password  | <password>  |
     When the "continueButton" from "RegisterPage" is clicked
-    And a thread sleep of 5000 milliseconds is executed
+    And a thread sleep of 1000 milliseconds is executed
     Then  the following list of error messages is displayed:
       | <errorMessage> must be between <min> and <max> characters! |
       | Warning: You must agree to the Privacy Policy!             |
