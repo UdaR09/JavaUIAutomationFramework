@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 
 public class DriverManager {
@@ -16,8 +17,9 @@ public class DriverManager {
         switch(WEB_DRIVER_TYPE.toUpperCase()) {
             case "CHROME":
                 ChromeOptions options = new ChromeOptions();
-                options.addArguments("--remote-allow-origins*");
-                driver = new ChromeDriver();
+                options.addArguments("--remote-allow-origins=*");
+                options.addArguments("--incognito");
+                driver = new ChromeDriver(options);
                 driver.manage().window().maximize();
                 System.out.println("Chrome driver loaded");
                 break;
