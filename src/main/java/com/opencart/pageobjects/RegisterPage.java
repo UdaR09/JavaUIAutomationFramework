@@ -1,6 +1,5 @@
 package com.opencart.pageobjects;
 
-import com.opencart.managers.ScrollManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -36,15 +35,4 @@ public class RegisterPage extends Page{
         System.out.println("Completed the register form with:\n" + email + "\n" + password);
     }
 
-    public void enablePrivacyPolicy() {
-        ScrollManager.ScrollToElement(privacyPolicy);
-        privacyPolicy.click();
-        System.out.println("Enabled Privacy Policy");
-    }
-
-    public void clickOnContinueButton() {
-        ScrollManager.ScrollToElement(continueButton);
-        continueButton.click();
-        System.out.println("The continue button is clicked");
-    }
 }

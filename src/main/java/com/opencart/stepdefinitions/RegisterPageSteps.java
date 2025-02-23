@@ -21,16 +21,6 @@ public class RegisterPageSteps {
 
     }
 
-    @And("The privacy policy is enabled")
-    public void thePrivacyPolicyIsEnabled() {
-        registerPage.enablePrivacyPolicy();
-    }
-
-    @When("Continue button is clicked")
-    public void continueButtonIsClicked() {
-        registerPage.clickOnContinueButton();
-    }
-
     @When("The register form is populated as following:")
     public void theRegisterFormIsPopulatedAsFollowing(Map<String, String> userData) {
         String firstName = userData.get("firstName");

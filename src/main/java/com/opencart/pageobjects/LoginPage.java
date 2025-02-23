@@ -23,9 +23,4 @@ public class LoginPage extends Page{
         this.password.sendKeys(password);
         System.out.println("Completed login form");
     }
-
-    public void clickLoginButton() {
-        this.loginButton.click();
-        System.out.println("Clicked Login button");
-    }
 }

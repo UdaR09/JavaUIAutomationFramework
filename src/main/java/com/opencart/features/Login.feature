@@ -1,11 +1,11 @@
 Feature: Login related tests
   @runNow
   Scenario Outline: An error message is displayed when trying to log in with invalid details
-    Given The "https://tekwillacademy-opencart.online/index.php?route=account/login&language=en-gb" is accessed
+    Given The "/index.php?route=account/login&language=en-gb" is accessed
     And the login form is populated with the following data:
       | <email>    |
       | <password> |
-    When the login button is clicked
+    When the "loginButton" from "LoginPage" is clicked
     And a thread sleep of 5000 milliseconds is executed
     Then the following list of error messages is displayed:
       | Warning: No match for E-Mail Address and/or Password. |

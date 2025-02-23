@@ -16,9 +16,4 @@ public class LoginPageSteps {
     public void theLoginFormIsPopulatedWithTheFollowingData(List<String> userData) {
         loginPage.completeLoginForm(userData.get(0), userData.get(1));
     }
-
-    @When("the login button is clicked")
-    public void theLoginButtonIsClicked() {
-        loginPage.clickLoginButton();
-    }
 }

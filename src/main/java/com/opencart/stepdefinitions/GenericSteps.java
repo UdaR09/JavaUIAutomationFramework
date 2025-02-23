@@ -1,13 +1,19 @@
 package com.opencart.stepdefinitions;
 
+import com.opencart.managers.ConfigReaderManager;
 import com.opencart.managers.DriverManager;
+import com.opencart.managers.ScrollManager;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 public class GenericSteps {
@@ -21,8 +27,10 @@ public class GenericSteps {
     }
 
     @Given("The {string} is accessed")
-    public void theIsAccessed(String link) {
-        driver.get(link);
+    public void theIsAccessed(String endpoint) {
+        String fullLink =ConfigReaderManager.getProperty("baseUrl") + endpoint;
+        driver.get(fullLink);
+        System.out.println("The " + fullLink + " is accessed");
     }
 
     @And("a thread sleep of {int} milliseconds is executed")
@@ -41,5 +49,15 @@ public class GenericSteps {
             boolean messagesDisplayed = driver.findElement(By.xpath(".//*[contains(text(),'" + errorMessage + "')]")).isDisplayed();
             Assertions.assertTrue(messagesDisplayed, "The following list of error messages is displayed");
         });
+    }
+
+    @When("the {string} from {string} is clicked")
+    public void theFromIsClicked(String element, String page) throws ClassNotFoundException, NoSuchFieldException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        Class classInstance = Class.forName("com.opencart.pageobjects."+page);
+        Field webElemetField = classInstance.getDeclaredField(element);
+        webElemetField.setAccessible(true);
+        WebElement webElement = (WebElement) webElemetField.get(classInstance.getConstructor(WebDriver.class).newInstance(driver));
+        ScrollManager.ScrollToElement(webElement);
+        webElement.click();
     }
 }
